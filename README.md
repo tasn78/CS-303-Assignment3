@@ -1,6 +1,8 @@
 # CS-303-Assignment3
 Stack and Queue
 
+All code was derived from class, CS303-0001
+
 Q1)
 Must import:
 #include "Balanced.h"
