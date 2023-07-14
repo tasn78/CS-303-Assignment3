@@ -7,6 +7,7 @@
 
 using namespace TS;
    
+// Adds to the rear of queue
 void Queue::enqueue(int value) {
     Node* newNode = new Node;
     newNode->data = value;
@@ -24,6 +25,7 @@ void Queue::enqueue(int value) {
     size++;
 }
 
+// Removes from the front of the queue
 int Queue::dequeue() {
     if (isEmpty()) {
         std::cout << "Error: Queue is empty!" << std::endl;
@@ -45,6 +47,7 @@ int Queue::dequeue() {
     return value;
 }
 
+// Returns item at the front of queue
 int Queue::getFront() {
     if (isEmpty()) {
         std::cout << "Error: Queue is empty" << std::endl;
@@ -54,14 +57,18 @@ int Queue::getFront() {
     return front->data;
 }
 
+
+// Returns true if empty, false if not empty
 bool Queue::isEmpty() {
     return size == 0;
 }
 
+// Returns size of queue
 int Queue::getSize() {
     return size;
 }
 
+// Prints contents of queue
 void Queue::print() {
     if (isEmpty()) {
         std::cout << "Queue is empty." << std::endl;

@@ -11,6 +11,7 @@
 
 namespace TS{
 
+    // Queue class of integers
     class Queue {
     private:
         struct Node {

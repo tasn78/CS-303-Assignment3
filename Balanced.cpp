@@ -5,17 +5,17 @@
 
 #include "Balanced.h"
 
-
+// Confirms if open brackets / NOT USED
 bool is_open(char ch) {
 	return OPEN.find(ch) != string::npos;
 }
 
-
+// Confirms if balanced, closed brackets / NOT USED
 bool is_close(char ch) {
 	return CLOSE.find(ch) != string::npos;
 }
 
-
+// Returns true if balanced, false if not balanced
 bool is_balanced(const string& expression) {
 	// A stack for the open parentheses that haven't been matched
 	stack<char> s;

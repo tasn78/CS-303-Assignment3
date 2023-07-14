@@ -21,32 +21,34 @@ string Infix_To_Postfix::convert(const string& expression) {
         if (ch == ' '){
             continue;
             }
-        // If it is an operand
+        // If it is an operand - can use functions from "Balanced.h"
         if (!is_operator(ch) && ch != ')' && ch != '(' &&
                          ch != '}' && ch != '{' && ch != ']' && ch != '[') {
             postfix += ch;
         }
+        // If left bracket - can use functions from "Balanced.h"
         else if (ch == '(' || ch == '{' || ch == '[') {
             operator_stack.push(ch);
         }
-
+        // If right bracket - can use functions from "Balanced.h"
         else if (ch == ')' || ch == '}' || ch == ']') {
             while (!operator_stack.empty() && operator_stack.top() != '(' &&
                 operator_stack.top() != '{' && operator_stack.top() != '[') {
                 postfix += operator_stack.top();
                 operator_stack.pop();
             }
-
+            // Confirms bracket matching - can use functions from "Balanced.h"
             if (!operator_stack.empty() && ((ch == ')' && operator_stack.top() == '(') ||
                                             (ch == '}' && operator_stack.top() == '{') ||
                                             (ch == ']' && operator_stack.top() == '['))) {
                 operator_stack.pop();
             }
+            // Throws error if brackets are mismatched
             else {
-                throw SyntaxError("Error: Mismatched brackets1");
+                throw SyntaxError("Error: Mismatched brackets");
             }
         }
-
+        // If operator
         else if (is_operator(ch)) {
             while (!operator_stack.empty() && operator_stack.top() != '(' && operator_stack.top() != '{' && operator_stack.top() != '[' && precedence(ch) <= precedence(operator_stack.top())) {
                 postfix += operator_stack.top();
@@ -59,7 +61,7 @@ string Infix_To_Postfix::convert(const string& expression) {
     // Pop any remaining operators from the stack and append them to the postfix expression
     while (!operator_stack.empty()) {
         if (operator_stack.top() == '(' || operator_stack.top() == '{' || operator_stack.top() == '[') {
-            throw SyntaxError("Error: Mismatched brackets2");
+            throw SyntaxError("Error: Mismatched brackets");
             return "";
         }
         postfix += operator_stack.top();

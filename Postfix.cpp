@@ -13,7 +13,8 @@ using std::isdigit;
 
 const std::string Postfix_Evaluator::OPERATORS = "+-*/%";
 
-int Postfix_Evaluator::eval(const std::string& expression) {
+// Evaluates postfix expression, not used or working
+int Postfix_Evaluator::eval(const std::string& expression) { // FIXME
 	while (!operand_stack.empty()) {
 		operand_stack.pop();
 
@@ -50,6 +51,7 @@ int Postfix_Evaluator::eval(const std::string& expression) {
 	}
 }
 
+// Evaluates FIX ME
 int Postfix_Evaluator::eval_op(char op) {
 	if (operand_stack.empty())
 		throw SyntaxError("Stack is empty");
